@@ -1,0 +1,78 @@
+public class StackDataStructure {
+
+    static int top = 0;
+    static int[] data = new int[5];
+
+    public static void main(String[] args) {
+
+        System.out.printf("Stack Data Structure = Insertion and Deletion happen on same end. Last in; First out");
+
+        StackDataStructure stack = new StackDataStructure();
+        stack.push(4);
+        stack.push(17);
+        stack.push(7);
+
+        stack.printing();
+        stack.pop();
+        stack.printing();
+        stack.pop();
+        stack.pop();
+        stack.printing();
+        stack.pop();
+
+        stack.push(22);
+        stack.push(55);
+        stack.push(2);
+        stack.printing();
+        stack.push(5);
+        stack.push(6);
+        stack.push(7);
+        stack.push(8);
+        stack.printing();
+        stack.push(51);
+        stack.printing();
+        stack.pop();
+        stack.pop();
+        stack.pop();
+        stack.printing();
+
+    }
+
+    public boolean isEmpty() {
+        if (data[0] == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public void push(int value) {
+        if (top < data.length) {
+            data[top] = value;
+            System.out.println("Added [" + data[top] + "]");
+            top = top + 1;
+        } else if (top == data.length) {
+            System.out.println("error... Stack is already full. Not posible add more than " + data.length + " element");
+        }
+    }
+
+    public int pop() {
+        if (isEmpty()) {
+            System.out.println("Stack is already empty! Not posible remove.. ");
+            return -1;
+        } else {
+            System.out.println("Pop [" + data[top - 1] + "]");
+            top = top - 1;
+            int datum = data[top];
+            data[top] = 0;
+            return datum;
+        }
+    }
+
+    public void printing() {
+        for (int i = 0; i < data.length; i++) {
+            System.out.print(data[i] + "| ");
+        }
+        System.out.println();
+    }
+
+}
